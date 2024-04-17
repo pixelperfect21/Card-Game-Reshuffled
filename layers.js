@@ -50,7 +50,7 @@ function upgradeLayer1() {
     }
 }
 function getLayer1Mult() {
-    let ;mult = 1
+    let mult = 1
     mult = mult * Math.pow(1.5, gameData.layers.layer1UpgAmount)
     mult = mult * Math.pow(2, getUsesInArray(gameData.main.hand, "J"))
     mult = mult * (getUsesInArray(gameData.main.hand, "9") * 9 + 1)
