@@ -16,15 +16,17 @@ var gameData = {
     },
     layers: {
         layer1Amount: 1,
-        layer1UpgCost: 1000,
+        layer1UpgCost: 10,
         layer1UpgAmount: 0,
         layer2Amount: 1,
-        layer2UpgCost: 100000,
+        layer2UpgCost: 1000,
         layer2UpgAmount: 0,
         layer3Amount: 1,
-        layer3UpgCost: 10000000,
+        layer3UpgCost: 100000,
         layer3UpgAmount: 0,
         layer4Amount: 1,
+        layer4UpgCost: 10000000,
+        layer4UpgAmount: 0,
         layer4UpgCost: 1000000000,
         layer4UpgAmount: 0,
     }
@@ -98,8 +100,8 @@ function checkNextUnlock() {
     } */
 }
 function update() {
+    document.getElementById("cardPointDisplay").innerHTML = formatNumber(gameData.main.cardPoints) + " Card Points (" + formatNumber(getCardPointGain()) + "/s)"
     // Main Tab
-    document.getElementById("cardPointDisplay").innerHTML = formatNumber(gameData.main.cardPoints) + " Card Points (" + formatNumber(gameData.main.cardPointGain) + "/s)"
     document.getElementById("cardProgressBuy").innerHTML = "Convert " + formatNumber(gameData.main.cardProgressionCost) + " Card Points to Card Progress"
     document.getElementById("cardProgressDisplay").innerHTML = "Card Progress: " + formatNumber(gameData.main.cardProgression) + "/" + formatNumber(gameData.main.cardReq)
     document.getElementById("drawDisplay").innerHTML = gameData.main.draws + " Draws Available"
@@ -118,6 +120,8 @@ function update() {
     document.getElementById("layer3Upg").innerHTML = "Upgrade Layer 3: Cost: " + formatNumber(gameData.layers.layer3UpgCost) + " Card Points"
     document.getElementById("layer4Display").innerHTML = "Layer 4: " + formatNumber(gameData.layers.layer4Amount) + " (x" + formatNumber(getLayer4Mult()) + ")"
     document.getElementById("layer4Upg").innerHTML = "Upgrade Layer 4: Cost: " + formatNumber(gameData.layers.layer4UpgCost) + " Card Points"
+    document.getElementById("layer5Display").innerHTML = "Layer 5: " + formatNumber(gameData.layers.layer5Amount) + " (x" + formatNumber(getLayer5Mult()) + ")"
+    document.getElementById("layer5Upg").innerHTML = "Upgrade Layer 5: Cost: " + formatNumber(gameData.layers.layer5UpgCost) + " Card Points"
 }
 // Loops
 var tickLoop = window.setInterval(function() {

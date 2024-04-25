@@ -17,9 +17,9 @@
     <button onclick="tab('indexTab')" class="button">Index</button>
     <button id="layerTabButton" onclick="tab('layerTab')" class="button">Card Layers</button>
   </div>
+  <p id="cardPointDisplay" class="variable">0 Card Points</p>
   <div id="mainTab">
     <body>
-      <p id="cardPointDisplay" class="variable">0 Card Points</p>
       <p></p>
       <button id="cardProgressBuy" onclick="convertCardPoints()">Convert 10 Card Points to Card Progress</button>
       <p></p>
@@ -56,17 +56,19 @@
   <div id="layerTab">
     <p>First card layer multiplies card point gain</p>
     <p>Each upgrade multiplies layer multipliers by x1.5 compounding</p>
-    <p id="layerNotif"></p>
     <p id="layer1Display" class="variable">Layer 1: 1 (x1)</p>
-    <button id="layer1Upg" onclick="upgradeLayer1()">Upgrade Layer 1: Cost: 1000 Card Points</button>
+    <button id="layer1Upg" onclick="upgradeLayer1()">Upgrade Layer 1: Cost: 10 Card Points</button>
     <p></p>
     <p id="layer2Display" class="variable">Layer 2: 1 (x1)</p>
-    <button id="layer2Upg" onclick="upgradeLayer2()">Upgrade Layer 2: Cost: 1e5 Card Points</button>
+    <button id="layer2Upg" onclick="upgradeLayer2()">Upgrade Layer 2: Cost: 1e3 Card Points</button>
     <p></p>
     <p id="layer3Display" class="variable">Layer 3: 1 (x1)</p>
-    <button id="layer3Upg" onclick="upgradeLayer3()">Upgrade Layer 3: Cost: 1e7 Card Points</button>
+    <button id="layer3Upg" onclick="upgradeLayer3()">Upgrade Layer 3: Cost: 1e5 Card Points</button>
     <p></p>
     <p id="layer4Display" class="variable">Layer 4: 1 (x1)</p>
-    <button id="layer4Upg" onclick="upgradeLayer4()">Upgrade Layer 4: Cost: 1e9 Card Points</button>
+    <button id="layer4Upg" onclick="upgradeLayer4()">Upgrade Layer 4: Cost: 1e7 Card Points</button>
+    <p></p>
+    <p id="layer5Display" class="variable">Layer 5: 1 (x1)</p>
+    <button id="layer5Upg" onclick="upgradeLayer5()">Upgrade Layer 5: Cost: 1e9 Card Points</button>
   </div>
 </html>
