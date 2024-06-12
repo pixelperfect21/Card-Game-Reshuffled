@@ -39,7 +39,7 @@ function tab(tab) {
     document.getElementById("settingsTab").style.display = "none"
     document.getElementById(tab).style.display = "inline-block"
 }
-tab('layerTab')
+tab('mainTab')
 var savegame = JSON.parse(localStorage.getItem("cgrSave"))
 if (savegame !== null) {
     gameData = savegame
