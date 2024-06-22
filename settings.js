@@ -13,6 +13,8 @@ function hardReset() {
                 deck: ['A','A','A','A','2','2','2','2','3','3','3','3','4','4','4','4','5','5','5','5','6','6','6','6','7','7','7','7','8','8','8','8','9','9','9','9','10','10','10','10','J','J','J','J','K','K','K','K','Q','Q','Q','Q'],
                 hand: [],
                 drawOptions: [],
+                totalConverts: 0,
+                totalDraws: 0,
             },
             layers: {
                 layer1Amount: 1,
@@ -36,4 +38,15 @@ function hardReset() {
         alert("Your save has been reset.")
     }
 }
+function darkModeToggle() {
     
+}
+function exportSave() {
+    navigator.clipboard.writeText(btoa(JSON.stringify(gameData)))
+    alert("Save exported")
+}
+function importSave() {
+    var encodedSave = prompt("Paste exported save here")
+    console.log(JSON.parse(atob(encodedSave)));
+    gameData = JSON.parse(atob(encodedSave))
+}

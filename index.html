@@ -9,74 +9,76 @@
     <meta charset="utf-8">
     <title>Card Game Reshuffled</title>
   </head>
-  <p id="cardPointDisplay" class="variable">Convert 10 Card Points to Card Progress</button>
-  <div id="navigation">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <button onclick="tab('mainTab')" class="button">Main</button>
-    <button onclick="tab('indexTab')" class="button">Index</button>
-    <button id="layerTabButton" onclick="tab('layerTab')" class="button">Card Layers</button>
-    <button id="settingsTabButton" onclick="tab('settingsTab')" class="button">Settings</button>
-    <p></p>
-  </div>
-  <div id="mainTab">
-    <body>
+  <div id="page">
+    <p id="cardPointDisplay" class="variable">Convert 10 Card Points to Card Progress</button>
+    <div id="navigation">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+      <button onclick="tab('mainTab')" class="button">Main</button>
+      <button onclick="tab('indexTab')" class="button">Index</button>
+      <button id="layerTabButton" onclick="tab('layerTab')" class="button">Card Layers</button>
+      <button id="settingsTabButton" onclick="tab('settingsTab')" class="button">Settings</button>
       <p></p>
-      <button id="cardProgressBuy" onclick="convertCardPoints()">Convert 10 Card Points to Card Progress</button>
+    </div>
+    <div id="mainTab">
+      <body>
+        <p></p>
+        <button id="cardProgressBuy" onclick="convertCardPoints()">Convert 10 Card Points to Card Progress</button>
+        <p></p>
+        <p id="cardProgressDisplay" class="variable">Card Progress: 0/1</p>
+        <p id="drawDisplay" class="variable">0 Draws Available</p>
+        <p></p>
+        <p id="deckDisplay" class="list">Deck: </p>
+        <p id="handDisplay" class="list">Hand: </p>
+        <p></p>
+        <button id="card1" onclick="drawCard(0)"></button>
+        <button id="card2" onclick="drawCard(1)"></button>
+        <button id="card3" onclick="drawCard(2)"></button>
+        <p></p>
+        <button id="forcePrestige" onclick="prestigeConfirm()">Force a Prestige reset for no multiplier</button>
+      </body>
+    </div>
+    <div id="indexTab">
+      <body>
+        <p>A: -0.1 card progression cost scaling per card (base factor is 1.5)</p>
+        <p>2: 2x card progression (compounding) per card</p>
+        <p>3: 3x card points (compounding) per card</p>
+        <p>4: -0.04 card requirement scaling per card (base factor is 2)</p>
+        <p>5: +5 base card points per card</p>
+        <p>6: +6x multiplier to 4th card layer</p>
+        <p>7: +7x multiplier to 3rd card layer</p>
+        <p>8: +8x multiplier to 2nd card layer</p>
+        <p>9: +9x multiplier to 1st card layer</p>
+        <p>10: +10x multiplier to card point gain</p>
+        <p>J: 2x multiplier to all card layers (compounding)</p>
+        <p>Q: Unlock a new Card Layer (max 4 layers)</p>
+        <p>K: 1000x card point multi per 4 cards</p>
+      </body>
+    </div>
+    <div id="layerTab">
+      <p>First card layer multiplies card point gain</p>
+      <p>Each upgrade multiplies layer multipliers by x1.5 compounding</p>
+      <p id="layer1Display" class="variable">Layer 1: 1 (x1)</p>
+      <button id="layer1Upg" onclick="upgradeLayer1()">Upgrade Layer 1: Cost: 10 Card Points</button>
       <p></p>
-      <p id="cardProgressDisplay" class="variable">Card Progress: 0/1</p>
-      <p id="drawDisplay" class="variable">0 Draws Available</p>
+      <p id="layer2Display" class="variable">Layer 2: 1 (x1)</p>
+      <button id="layer2Upg" onclick="upgradeLayer2()">Upgrade Layer 2: Cost: 1e3 Card Points</button>
       <p></p>
-      <p id="deckDisplay" class="list">Deck: </p>
-      <p id="handDisplay" class="list">Hand: </p>
+      <p id="layer3Display" class="variable">Layer 3: 1 (x1)</p>
+      <button id="layer3Upg" onclick="upgradeLayer3()">Upgrade Layer 3: Cost: 1e5 Card Points</button>
       <p></p>
-      <button id="card1" onclick="drawCard(0)"></button>
-      <button id="card2" onclick="drawCard(1)"></button>
-      <button id="card3" onclick="drawCard(2)"></button>
+      <p id="layer4Display" class="variable">Layer 4: 1 (x1)</p>
+      <button id="layer4Upg" onclick="upgradeLayer4()">Upgrade Layer 4: Cost: 1e7 Card Points</button>
       <p></p>
-      <button id="forcePrestige" onclick="prestigeConfirm()">Force a Prestige reset for no multiplier</button>
-    </body>
-  </div>
-  <div id="indexTab">
-    <body>
-      <p>A: -0.1 card progression cost scaling per card (base factor is 1.5)</p>
-      <p>2: 2x card progression (compounding) per card</p>
-      <p>3: 3x card points (compounding) per card</p>
-      <p>4: -0.04 card requirement scaling per card (base factor is 2)</p>
-      <p>5: +5 base card points per card</p>
-      <p>6: +6x multiplier to 4th card layer</p>
-      <p>7: +7x multiplier to 3rd card layer</p>
-      <p>8: +8x multiplier to 2nd card layer</p>
-      <p>9: +9x multiplier to 1st card layer</p>
-      <p>10: +10x multiplier to card point gain</p>
-      <p>J: 2x multiplier to all card layers (compounding)</p>
-      <p>Q: Unlock a new Card Layer (max 4 layers)</p>
-      <p>K: 1000x card point multi per 4 cards</p>
-    </body>
-  </div>
-  <div id="layerTab">
-    <p>First card layer multiplies card point gain</p>
-    <p>Each upgrade multiplies layer multipliers by x1.5 compounding</p>
-    <p id="layer1Display" class="variable">Layer 1: 1 (x1)</p>
-    <button id="layer1Upg" onclick="upgradeLayer1()">Upgrade Layer 1: Cost: 10 Card Points</button>
-    <p></p>
-    <p id="layer2Display" class="variable">Layer 2: 1 (x1)</p>
-    <button id="layer2Upg" onclick="upgradeLayer2()">Upgrade Layer 2: Cost: 1e3 Card Points</button>
-    <p></p>
-    <p id="layer3Display" class="variable">Layer 3: 1 (x1)</p>
-    <button id="layer3Upg" onclick="upgradeLayer3()">Upgrade Layer 3: Cost: 1e5 Card Points</button>
-    <p></p>
-    <p id="layer4Display" class="variable">Layer 4: 1 (x1)</p>
-    <button id="layer4Upg" onclick="upgradeLayer4()">Upgrade Layer 4: Cost: 1e7 Card Points</button>
-    <p></p>
-    <p id="layer5Display" class="variable">Layer 5: 1 (x1)</p>
-    <button id="layer5Upg" onclick="upgradeLayer5()">Upgrade Layer 5: Cost: 1e9 Card Points</button>
-  </div>
-  <div id="settingsTab">
-    <button id="darkModeButton" onclick="darkModeToggle()">Dark Mode: OFF</button>
-    <button id="exportButton" onclick="exportSave()">Export Save</button>
-    <button id="importButton" onclick="importSave()">Import Save</button>
-    <button id="resetButton" onclick="hardReset()">HARD RESET</button>
+      <p id="layer5Display" class="variable">Layer 5: 1 (x1)</p>
+      <button id="layer5Upg" onclick="upgradeLayer5()">Upgrade Layer 5: Cost: 1e9 Card Points</button>
+    </div>
+    <div id="settingsTab">
+      <button id="darkModeButton" onclick="darkModeToggle()">Dark Mode: OFF</button>
+      <button id="exportButton" onclick="exportSave()">Export Save</button>
+      <button id="importButton" onclick="importSave()">Import Save</button>
+      <button id="resetButton" onclick="hardReset()">HARD RESET</button>
+    </div>
   </div>
 </html>

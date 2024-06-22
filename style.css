@@ -33,3 +33,32 @@ button {
     padding-right: 10px;
     color: rgb(255, 255, 255);
 }
+.buttonDark {
+    background-color: #000000;
+    border: 3.5px solid;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: "Noto Sans";
+    font-weight: 500;
+}
+.variableDark {
+    background-color: #ffa54d;
+    border: 1px solid;
+    border-color: #bfbfbf;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: rgb(0, 0, 0);
+}
+.listDark {
+    background-color: #ff9966;
+    border: 1px solid;
+    border-color: #bfbfbf;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: rgb(0, 0, 0);
+}

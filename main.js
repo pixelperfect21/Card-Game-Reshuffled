@@ -13,19 +13,27 @@ function getCardProgressGain() {
     gain = gain * (Math.pow(2, getUsesInArray(gameData.main.hand, "2")))
     return gain
 }
+function getCardPointCost() {
+    return 10 * Math.pow(((1.5 - (getUsesInArray(gameData.main.hand, "A") * 0.1))), gameData.main.totalConverts)
+}
 function convertCardPoints() {
     if (gameData.main.cardPoints >= gameData.main.cardProgressionCost) {
         gameData.main.cardPoints = gameData.main.cardPoints - gameData.main.cardProgressionCost
         gameData.main.cardProgression = gameData.main.cardProgression + getCardProgressGain()
-        gameData.main.cardProgressionCost = gameData.main.cardProgressionCost * (1.5 - (getUsesInArray(gameData.main.hand, "A") * 0.1))
+        gameData.main.totalConverts++
+        gameData.main.cardProgressionCost = getCardPointCost()
         update();
     }
+}
+function getDrawReq() {
+    return Math.pow((1.75 - (getUsesInArray(gameData.main.hand, "4") * 0.04)), gameData.main.totalDraws)
 }
 function checkDraws() {
     if (gameData.main.cardProgression >= gameData.main.cardReq) {
         gameData.main.cardProgression -= gameData.main.cardReq;
         gameData.main.draws++;
-        gameData.main.cardReq = gameData.main.cardReq * (2 - (getUsesInArray(gameData.main.hand, "4") * 0.04));
+        gameData.main.totalDraws++;
+        gameData.main.cardReq = getDrawReq()
         update();
     }
 }
@@ -40,6 +48,8 @@ function drawCard(option) {
         gameData.main.draws--
         gameData.main.hand.push(gameData.main.deck[gameData.main.drawOptions[option]])
         gameData.main.deck = removeItem(gameData.main.deck, gameData.main.drawOptions[option])
+        gameData.main.cardProgressionCost = getCardPointCost()
+        gameData.main.cardReq = getDrawReq()
         randomizeDrawOptions()
     }
 }
@@ -67,6 +77,9 @@ function prestigeConfirm() {
         gameData.layers.layer5Amount = 1,
         gameData.layers.layer5UpgAmount = 0
         gameData.layers.layer5UpgCost = 1000000000
+        gameData.main.reshufflers = 3
+        gameData.main.totalConverts = 0
+        gameData.main.totalDraws = 0
         randomizeDrawOptions()
     }
 }
