@@ -1,7 +1,6 @@
 // Main
 function getCardPointGain() {
     let gain = 1
-    gain = gain + (getUsesInArray(gameData.main.hand, "5") * 5)
     gain = gain * (Math.pow(3, getUsesInArray(gameData.main.hand, "3")))
     gain = gain * ((10 * getUsesInArray(gameData.main.hand, "10")) + 1)
     gain = gain * (gameData.layers.layer1Amount * getLayer1Mult())
@@ -64,19 +63,14 @@ function prestigeConfirm() {
         gameData.main.hand = []
         gameData.layers.layer1Amount = 1
         gameData.layers.layer1UpgAmount = 0
-        gameData.layers.layer1UpgCost = 10
         gameData.layers.layer2Amount = 1
         gameData.layers.layer2UpgAmount = 0
-        gameData.layers.layer2UpgCost = 1000
         gameData.layers.layer3Amount = 1
         gameData.layers.layer3UpgAmount = 0
-        gameData.layers.layer3UpgCost = 100000
         gameData.layers.layer4Amount = 1
         gameData.layers.layer4UpgAmount = 0
-        gameData.layers.layer4UpgCost = 10000000
         gameData.layers.layer5Amount = 1,
         gameData.layers.layer5UpgAmount = 0
-        gameData.layers.layer5UpgCost = 1000000000
         gameData.main.reshufflers = 3
         gameData.main.totalConverts = 0
         gameData.main.totalDraws = 0

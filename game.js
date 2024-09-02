@@ -135,6 +135,7 @@ var tickLoop = window.setInterval(function() {
     gameData.main.cardPointGain = getCardPointGain()
     checkNextUnlock()
     showLayers()
+    getLayerCosts()
 }, 10)
 var genLoop = window.setInterval(function() {
     diff = Date.now() - gameData.lastTick;
